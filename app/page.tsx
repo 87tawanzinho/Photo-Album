@@ -1,19 +1,25 @@
 import { cn } from "@/lib/utils";
-import { Poppins } from "next/font/google";
-import Image from "next/image";
+import { Lato, Libre_Franklin, Open_Sans, Poppins } from "next/font/google";
 import CardImgs from "./components/card-imgs";
-
-const font = Poppins({
+import { PiGooglePhotosLogoFill } from "react-icons/pi";
+const font = Libre_Franklin({
   subsets: ["latin"],
-  weight: ["600"],
+  weight: ["300"],
 });
 export default function Home() {
   return (
-    <main className="flex flex-col justify-center items-center h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-800 to-gray-800">
+    <main className="flex flex-col pt-24 pl-4 h-full  ">
       <h2
-        className={cn("drop-shadow-lg text-3xl text-gray-100", font.className)}
+        className={cn(
+          "drop-shadow-lg text-3xl  flex gap-4 items-center text-zinc-800",
+          font.className
+        )}
       >
-        Meu album de fotos
+        Meu album de fotos{" "}
+        <span className="">
+          {" "}
+          <PiGooglePhotosLogoFill />
+        </span>
       </h2>
       <CardImgs />
     </main>
