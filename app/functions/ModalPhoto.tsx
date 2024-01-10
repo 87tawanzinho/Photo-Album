@@ -5,6 +5,7 @@ import { ModalPhoto, myImgs } from "../interfaces";
 import { Button } from "@/components/ui/button";
 import { SlLike } from "react-icons/sl";
 import { PageContext } from "../context/PageContext";
+import ColorButton from "../components/colors-button";
 function ModalPhoto({
   selectedPhoto,
   srcLarge,
@@ -15,23 +16,8 @@ function ModalPhoto({
   const { favoritesMap, setFavoritesMap } = useContext(PageContext);
 
   const [imgOriginal, setImgOriginal] = useState(true);
-  const [changeColor, setChangeColor] = useState("");
+  const [changeColor, setChangeColor] = useState<string>("");
   const [loading, setIsLoading] = useState(true);
-  const handleColor = (color: string) => {
-    if (color === "") {
-      return setChangeColor("");
-    }
-    if (color === "gray") {
-      return setChangeColor("grayscale");
-    }
-
-    if (color === "sepia") {
-      return setChangeColor("sepia");
-    }
-    if (color === "rotate") {
-      return setChangeColor("hue-rotate-90");
-    }
-  };
 
   const handleLoading = async () => {
     setTimeout(() => {
@@ -65,18 +51,7 @@ function ModalPhoto({
   return (
     <div className="h-full w-full flex-col bg-opacity-95 bg-black flex justify-center items-center fixed top-0 left-0 p-4 lg:p-20 ">
       {loading ? (
-        <div className="loading">
-          <svg width="64px" height="48px">
-            <polyline
-              points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
-              id="back"
-            ></polyline>
-            <polyline
-              points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
-              id="front"
-            ></polyline>
-          </svg>
-        </div>
+        <LoadingPhoto />
       ) : (
         <div>
           <div>
@@ -130,31 +105,27 @@ function ModalPhoto({
               />
             )}
           </div>
-          <div className="mt-4 flex gap-2 justify-center items-center">
-            <div className="flex gap-2">
-              <p
-                className={`rounded-full bg-white w-8 h-8 cursor-pointer transition-all`}
-                onClick={() => handleColor("")}
-              ></p>
-              <p
-                className={`rounded-full bg-gray-500 w-8 h-8 cursor-pointer hover:bg-gray-700 transition-all`}
-                onClick={() => handleColor("gray")}
-              ></p>
-              <p
-                className={`rounded-full bg-yellow-500 w-8 h-8 cursor-pointer hover:bg-yellow-700 transition-all`}
-                onClick={() => handleColor("sepia")}
-              ></p>
-
-              <p
-                className={`rounded-full bg-green-500 w-8 h-8 cursor-pointer hover:bg-green-700 transition-all`}
-                onClick={() => handleColor("rotate")}
-              ></p>
-            </div>
-          </div>
+          <ColorButton setChangeColor={setChangeColor} />
         </div>
       )}
     </div>
   );
 }
 
+const LoadingPhoto = () => {
+  return (
+    <div className="loading">
+      <svg width="64px" height="48px">
+        <polyline
+          points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
+          id="back"
+        ></polyline>
+        <polyline
+          points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
+          id="front"
+        ></polyline>
+      </svg>
+    </div>
+  );
+};
 export default ModalPhoto;
