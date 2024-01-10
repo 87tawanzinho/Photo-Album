@@ -44,16 +44,24 @@ function ModalPhoto({
       (photo) => photo.id === selectedPhoto.id
     );
     if (alreadyExist) {
-      return alert("Photo already exist.");
+      const updatedFav = favoritesMap!.filter(
+        (photo) => photo.id !== selectedPhoto.id
+      );
+      return setFavoritesMap(updatedFav);
     }
     setFavoritesMap((prev: myImgs[]) => [...prev, selectedPhoto]);
     const updatedFavoritesMap = [...favoritesMap!, selectedPhoto];
     localStorage.setItem("favorites", JSON.stringify(updatedFavoritesMap));
   };
+  const photoExistToFav = () => {
+    return favoritesMap?.some((photo) => photo.id === selectedPhoto.id)
+      ? "bg-sky-800 hover:bg-sky-600"
+      : "bg-red-800 hover:bg-red-600";
+  };
 
   useEffect(() => {
     handleLoading();
-  }, [favoritesMap]);
+  }, [favoritesMap, selectedPhoto.id]);
   return (
     <div className="h-full w-full flex-col bg-opacity-95 bg-black flex justify-center items-center fixed top-0 left-0 p-4 lg:p-20 ">
       {loading ? (
@@ -98,7 +106,7 @@ function ModalPhoto({
                 onClick={() => {
                   newFav();
                 }}
-                className="text-white rounded-full bg-red-800  cursor-pointer hover:bg-red-600 transition-all"
+                className={`text-white rounded-full ${photoExistToFav()}  cursor-pointer transition-all`}
               />
               <CgClose
                 onClick={() => setOpen(false)}
