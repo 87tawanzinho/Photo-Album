@@ -98,8 +98,8 @@ function ModalPhoto({
             </div>
           </div>
 
-          <div className="flex flex-col  space-y-12 sm:space-y-8 lg:space-y-4 ">
-            <div className="flex items-center gap-2 justify-between">
+          <div className="flex flex-col    lg:space-y-4 ">
+            <div className="flex items-center gap-2 justify-between my-4">
               {" "}
               <SlLike
                 size="30"
@@ -118,7 +118,7 @@ function ModalPhoto({
               <img
                 src={srcLarge}
                 alt={alt}
-                className={`rounded-lg border border-gray-800 ${changeColor} transition-all w-auto h-auto max-h-full lg:max-h-[600px]  object-contain`}
+                className={`rounded-lg border border-gray-800 ${changeColor} transition-all w-auto h-auto max-h-96 lg:max-h-[600px]  object-contain`}
               />
             ) : (
               <img
