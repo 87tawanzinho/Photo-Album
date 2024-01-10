@@ -1,7 +1,5 @@
 "use client";
 import axios from "axios";
-import { PageContext } from "../context/PageContext";
-import { useContext } from "react";
 
 export default async function GetImg(page: number) {
   try {

@@ -33,7 +33,7 @@ function NavMain() {
         <nav className=" border-b border-gray-400 p-4 shadow-md flex items-center gap-2 justify-between fixed w-full">
           <div>
             <h2 className={cn(fontLogo.className)}>
-              <span className="text-red-800">MyDrop</span> Photos
+              <span className="text-red-800">MyDrop</span> Photos * 2002
             </h2>
           </div>
           <div className="flex items-center gap-4">

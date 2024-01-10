@@ -14,7 +14,7 @@ function Pagination() {
   };
 
   const handleNext = () => {
-    if (page == 30) {
+    if (page == 80) {
       return;
     }
 
@@ -22,10 +22,15 @@ function Pagination() {
   };
 
   return (
-    <div className="flex gap-4 fixed bottom-0 cursor-pointer bg-black text-white w-full p-2">
-      <p onClick={handlePrev}>Pagina Anterior</p>
-      <p>{page}</p>
-      <p onClick={handleNext}>Proxima Pagina</p>
+    <div className="flex gap-4 fixed bottom-0  bg-black text-gray-400 w-full p-2 ">
+      <p onClick={handlePrev} className="cursor-pointer">
+        {" "}
+        {"< "}Pagina Anterior
+      </p>
+      <p className="cursor-progress font-bold text-white">[{page}]</p>
+      <p onClick={handleNext} className="cursor-pointer">
+        Proxima Pagina {" >"}
+      </p>
     </div>
   );
 }

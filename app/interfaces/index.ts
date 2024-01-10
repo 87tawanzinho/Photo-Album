@@ -13,3 +13,10 @@ export interface PageContextType {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
 }
+
+export interface ModalPhoto {
+  alt: string;
+  srcLarge: string;
+  srcLandscape: string;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}

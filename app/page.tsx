@@ -17,7 +17,7 @@ export default function Home() {
           font.className
         )}
       >
-        Meu album de fotos{" "}
+        Universal Pictures{" "}
         <span className="">
           {" "}
           <PiGooglePhotosLogoFill />
