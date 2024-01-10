@@ -55,8 +55,8 @@ function ModalPhoto({
   };
   const photoExistToFav = () => {
     return favoritesMap?.some((photo) => photo.id === selectedPhoto.id)
-      ? "bg-sky-800 hover:bg-sky-600"
-      : "bg-red-800 hover:bg-red-600";
+      ? "text-sky-800 hover:text-sky-600 "
+      : "text-red-800 hover:text-red-600";
   };
 
   useEffect(() => {
@@ -98,20 +98,22 @@ function ModalPhoto({
             </div>
           </div>
 
-          <div className="flex flex-col    lg:space-y-4 ">
+          <div className="flex flex-col     lg:space-y-4 ">
             <div className="flex items-center gap-2 justify-between my-4">
               {" "}
-              <SlLike
-                size="30"
-                onClick={() => {
-                  newFav();
-                }}
-                className={`text-white rounded-full ${photoExistToFav()}  cursor-pointer transition-all`}
-              />
+              <div className="bg-black rounded-full p-1 opacity-75">
+                <SlLike
+                  size="30"
+                  onClick={() => {
+                    newFav();
+                  }}
+                  className={` ${photoExistToFav()}  cursor-pointer transition-all`}
+                />
+              </div>
               <CgClose
                 onClick={() => setOpen(false)}
                 size="30"
-                className=" text-white cursor-pointer hover:bg-red-800 transition-all shadow-2xl hover:rounded-full "
+                className=" text-white  cursor-pointer hover:bg-red-800 transition-all shadow-2xl hover:rounded-full "
               />{" "}
             </div>
             {imgOriginal ? (
