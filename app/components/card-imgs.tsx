@@ -89,7 +89,7 @@ function CardImgs({ isGoFavorite }: any) {
                   onClick={() => handleImageClick(img)}
                   src={img.src.large}
                   alt={img.alt}
-                  className=" w-48 h-52 object-cover  lg:h-80 lg:w-[400px]  rounded-lg drop-shadow-2xl border-[12px] border-black hover:saturate-200 transition-all"
+                  className="  w-40 h-40 sm:w-48 sm:h-52  object-cover  lg:h-80 lg:w-[400px]  rounded-lg drop-shadow-2xl border-[12px] border-black hover:saturate-200 transition-all"
                 />
               </div>
             </div>
