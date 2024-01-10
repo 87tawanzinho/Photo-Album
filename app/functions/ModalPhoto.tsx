@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { ModalPhoto } from "../interfaces";
 import { Button } from "@/components/ui/button";
-import Loading from "@/components/loading";
+import { SlLike } from "react-icons/sl";
 function ModalPhoto({ srcLarge, srcLandscape, alt, setOpen }: ModalPhoto) {
   const [imgOriginal, setImgOriginal] = useState(true);
   const [changeColor, setChangeColor] = useState("");
@@ -68,12 +68,20 @@ function ModalPhoto({ srcLarge, srcLandscape, alt, setOpen }: ModalPhoto) {
               </Button>
             </div>
           </div>
-          <div className="flex flex-col justify-center items-end">
-            <CgClose
-              onClick={() => setOpen(false)}
-              size="30"
-              className=" text-white cursor-pointer hover:bg-red-800 transition-all shadow-2xl hover:rounded-full mb-2"
-            />{" "}
+
+          <div className="flex flex-col space-y-4 ">
+            <div className="flex items-center gap-2 justify-between">
+              {" "}
+              <SlLike
+                size="30"
+                className="text-white rounded-full bg-red-800  cursor-pointer hover:bg-red-600 transition-all"
+              />
+              <CgClose
+                onClick={() => setOpen(false)}
+                size="30"
+                className=" text-white cursor-pointer hover:bg-red-800 transition-all shadow-2xl hover:rounded-full "
+              />{" "}
+            </div>
             {imgOriginal ? (
               <img
                 src={srcLarge}
@@ -88,24 +96,26 @@ function ModalPhoto({ srcLarge, srcLandscape, alt, setOpen }: ModalPhoto) {
               />
             )}
           </div>
-          <div className="mt-4 flex gap-2 justify-center">
-            <p
-              className={`rounded-full bg-white w-8 h-8 cursor-pointer transition-all`}
-              onClick={() => handleColor("")}
-            ></p>
-            <p
-              className={`rounded-full bg-gray-500 w-8 h-8 cursor-pointer hover:bg-gray-700 transition-all`}
-              onClick={() => handleColor("gray")}
-            ></p>
-            <p
-              className={`rounded-full bg-yellow-500 w-8 h-8 cursor-pointer hover:bg-yellow-700 transition-all`}
-              onClick={() => handleColor("sepia")}
-            ></p>
+          <div className="mt-4 flex gap-2 justify-center items-center">
+            <div className="flex gap-2">
+              <p
+                className={`rounded-full bg-white w-8 h-8 cursor-pointer transition-all`}
+                onClick={() => handleColor("")}
+              ></p>
+              <p
+                className={`rounded-full bg-gray-500 w-8 h-8 cursor-pointer hover:bg-gray-700 transition-all`}
+                onClick={() => handleColor("gray")}
+              ></p>
+              <p
+                className={`rounded-full bg-yellow-500 w-8 h-8 cursor-pointer hover:bg-yellow-700 transition-all`}
+                onClick={() => handleColor("sepia")}
+              ></p>
 
-            <p
-              className={`rounded-full bg-green-500 w-8 h-8 cursor-pointer hover:bg-green-700 transition-all`}
-              onClick={() => handleColor("rotate")}
-            ></p>
+              <p
+                className={`rounded-full bg-green-500 w-8 h-8 cursor-pointer hover:bg-green-700 transition-all`}
+                onClick={() => handleColor("rotate")}
+              ></p>
+            </div>
           </div>
         </div>
       )}

@@ -22,7 +22,7 @@ function Pagination() {
   };
 
   return (
-    <div className="flex gap-4 fixed bottom-0  bg-black text-gray-400 w-full p-2 ">
+    <div className="flex gap-4 fixed bottom-0  bg-black text-gray-400 left-0 w-full p-2 ">
       <p onClick={handlePrev} className="cursor-pointer">
         {" "}
         {"< "}Pagina Anterior
