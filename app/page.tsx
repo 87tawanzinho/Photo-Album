@@ -1,17 +1,19 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { Lato, Libre_Franklin, Open_Sans, Poppins } from "next/font/google";
 import CardImgs from "./components/card-imgs";
 import { PiGooglePhotosLogoFill } from "react-icons/pi";
+
 const font = Libre_Franklin({
   subsets: ["latin"],
   weight: ["300"],
 });
 export default function Home() {
   return (
-    <main className="flex flex-col pt-24 pl-4 h-full  ">
+    <main className="flex flex-col pt-24  h-full  ">
       <h2
         className={cn(
-          "drop-shadow-lg text-3xl  flex gap-4 items-center text-zinc-800",
+          "drop-shadow-lg text-3xl  flex gap-4 items-center text-zinc-800 p-4",
           font.className
         )}
       >
@@ -21,6 +23,7 @@ export default function Home() {
           <PiGooglePhotosLogoFill />
         </span>
       </h2>
+
       <CardImgs />
     </main>
   );
