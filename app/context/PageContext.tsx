@@ -1,10 +1,12 @@
 "use client";
 import { createContext, useState } from "react";
-import { PageContextType } from "../interfaces";
+import { PageContextType, myImgs } from "../interfaces";
 
 export const PageContext = createContext<PageContextType>({
   page: 0,
   setPage: () => {},
+  favoritesMap: [],
+  setFavoritesMap: () => {},
 });
 
 export function PageContextProvider({
@@ -13,8 +15,11 @@ export function PageContextProvider({
   children: React.ReactNode;
 }) {
   const [page, setPage] = useState(1);
+  const [favoritesMap, setFavoritesMap] = useState<myImgs[]>([]);
   return (
-    <PageContext.Provider value={{ page, setPage }}>
+    <PageContext.Provider
+      value={{ page, setPage, favoritesMap, setFavoritesMap }}
+    >
       {children}
     </PageContext.Provider>
   );

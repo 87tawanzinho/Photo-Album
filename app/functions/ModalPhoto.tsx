@@ -1,10 +1,19 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
-import { ModalPhoto } from "../interfaces";
+import { ModalPhoto, myImgs } from "../interfaces";
 import { Button } from "@/components/ui/button";
 import { SlLike } from "react-icons/sl";
-function ModalPhoto({ srcLarge, srcLandscape, alt, setOpen }: ModalPhoto) {
+import { PageContext } from "../context/PageContext";
+function ModalPhoto({
+  selectedPhoto,
+  srcLarge,
+  srcLandscape,
+  alt,
+  setOpen,
+}: ModalPhoto) {
+  const { favoritesMap, setFavoritesMap } = useContext(PageContext);
+
   const [imgOriginal, setImgOriginal] = useState(true);
   const [changeColor, setChangeColor] = useState("");
   const [loading, setIsLoading] = useState(true);
@@ -30,9 +39,21 @@ function ModalPhoto({ srcLarge, srcLandscape, alt, setOpen }: ModalPhoto) {
     }, 400);
   };
 
+  const newFav = () => {
+    const alreadyExist = favoritesMap?.some(
+      (photo) => photo.id === selectedPhoto.id
+    );
+    if (alreadyExist) {
+      return alert("Photo already exist.");
+    }
+    setFavoritesMap((prev: myImgs[]) => [...prev, selectedPhoto]);
+    const updatedFavoritesMap = [...favoritesMap!, selectedPhoto];
+    localStorage.setItem("favorites", JSON.stringify(updatedFavoritesMap));
+  };
+
   useEffect(() => {
     handleLoading();
-  }, []);
+  }, [favoritesMap]);
   return (
     <div className="h-full w-full flex-col bg-opacity-95 bg-black flex justify-center items-center fixed top-0 left-0 p-4 lg:p-20 ">
       {loading ? (
@@ -74,6 +95,9 @@ function ModalPhoto({ srcLarge, srcLandscape, alt, setOpen }: ModalPhoto) {
               {" "}
               <SlLike
                 size="30"
+                onClick={() => {
+                  newFav();
+                }}
                 className="text-white rounded-full bg-red-800  cursor-pointer hover:bg-red-600 transition-all"
               />
               <CgClose

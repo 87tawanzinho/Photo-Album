@@ -4,12 +4,14 @@ import { Lato, Libre_Franklin, Open_Sans, Poppins } from "next/font/google";
 import CardImgs from "./components/card-imgs";
 import { PiGooglePhotosLogoFill } from "react-icons/pi";
 import MyFavorites from "./components/my-favorites";
+import { useState } from "react";
 
 const font = Libre_Franklin({
   subsets: ["latin"],
   weight: ["300"],
 });
 export default function Home() {
+  const [goFavorites, setGoFavorites] = useState(false);
   return (
     <main className="flex flex-col pt-24  h-full px-0 lg:px-24  ">
       <div className="flex items-center justify-between">
@@ -29,10 +31,13 @@ export default function Home() {
           </h2>
         </div>
         <div className="w-64 p-4">
-          <MyFavorites />
+          <MyFavorites
+            isGoFavorite={goFavorites}
+            setIsGoFavorite={setGoFavorites}
+          />
         </div>
       </div>
-      <CardImgs />
+      <CardImgs isGoFavorite={goFavorites} />
     </main>
   );
 }

@@ -12,9 +12,12 @@ export interface myImgs {
 export interface PageContextType {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
+  favoritesMap: myImgs[] | undefined;
+  setFavoritesMap: any;
 }
 
 export interface ModalPhoto {
+  selectedPhoto: myImgs;
   alt: string;
   srcLarge: string;
   srcLandscape: string;

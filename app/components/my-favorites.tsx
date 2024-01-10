@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 
-function MyFavorites() {
-  return <Button variant={"default"}>My Favorites</Button>;
+function MyFavorites({ isGoFavorite, setIsGoFavorite }: any) {
+  return (
+    <Button variant={"default"} onClick={() => setIsGoFavorite(!isGoFavorite)}>
+      {isGoFavorite ? "All Photos" : "MyFavorites"}
+    </Button>
+  );
 }
 
 export default MyFavorites;
