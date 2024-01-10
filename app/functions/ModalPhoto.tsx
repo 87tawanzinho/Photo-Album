@@ -98,7 +98,7 @@ function ModalPhoto({
             </div>
           </div>
 
-          <div className="flex flex-col space-y-4 ">
+          <div className="flex flex-col  space-y-12 sm:space-y-8 lg:space-y-4 ">
             <div className="flex items-center gap-2 justify-between">
               {" "}
               <SlLike
